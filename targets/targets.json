@@ -482,6 +482,17 @@
         "release_versions": ["2"],
         "device_name": "MK20DX256xxx7"
     },
+    "OMS524A": {
+        "inherits": ["Target"],
+        "core": "Cortex-M4",
+        "extra_labels": ["Freescale", "KSDK2_MCUS", "K20D10"],
+        "supported_toolchains": ["GCC_ARM", "ARM"],
+        "macros": ["CPU_MK20DN512VMC10", "FSL_RTOS_MBED"],
+        "is_disk_virtual": true,
+        "device_has": ["ANALOGIN", "ANALOGOUT", "ERROR_RED", "I2C", "I2CSLAVE", "INTERRUPTIN", "LOWPOWERTIMER", "PORTIN", "PORTINOUT", "PORTOUT", "PWMOUT", "RTC", "SERIAL", "SLEEP", "SPI", "SPISLAVE", "STDIO_MESSAGES"],
+        "release_versions": ["5"],
+        "device_name": "MK20DN512xxx10"
+    },
     "MCU_K22F512": {
         "core": "Cortex-M4F",
         "supported_toolchains": ["ARM", "GCC_ARM", "IAR"],
