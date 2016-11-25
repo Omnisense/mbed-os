@@ -485,7 +485,7 @@
     "OMS524A": {
         "inherits": ["Target"],
         "core": "Cortex-M4",
-        "extra_labels": ["Freescale", "KSDK2_MCUS", "K20D10"],
+        "extra_labels": ["Freescale", "KSDK2_MCUS", "K20D10", "KPSDK_MCUS"],
         "supported_toolchains": ["GCC_ARM", "ARM"],
         "macros": ["CPU_MK20DN512VMC10", "FSL_RTOS_MBED"],
         "is_disk_virtual": true,

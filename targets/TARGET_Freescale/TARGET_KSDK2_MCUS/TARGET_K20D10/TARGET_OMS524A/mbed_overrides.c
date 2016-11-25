@@ -30,12 +30,11 @@ void mbed_sdk_init()
 }
 
 // Enable the RTC oscillator if available on the board
-//void rtc_setup_oscillator(RTC_Type *base)
-//{
-//    /* Enable the RTC oscillator */
-//    RTC->CR |= RTC_CR_OSCE_MASK;
-//}
-// Enabled as part of the BootClockRUN routine on this board
+void rtc_setup_oscillator(RTC_Type *base)
+{
+    /* Enable the RTC oscillator */
+    RTC->CR |= RTC_CR_OSCE_MASK;
+}
 
 // Change the NMI pin to an input. This allows NMI pin to
 //  be used as a low power mode wakeup.  The application will

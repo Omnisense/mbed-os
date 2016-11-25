@@ -315,4 +315,86 @@ void serial_set_flow_control(serial_t *obj, FlowControl type, PinName rxflow, Pi
 
 #endif
 
+#if DEVICE_SERIAL_ASYNCH
+
+/** Begin asynchronous TX transfer. The used buffer is specified in the serial object,
+ *  tx_buff
+ *
+ * @param obj       The serial object
+ * @param tx        The transmit buffer
+ * @param tx_length The number of bytes to transmit
+ * @param tx_width  Deprecated argument
+ * @param handler   The serial handler
+ * @param event     The logical OR of events to be registered
+ * @param hint      A suggestion for how to use DMA with this transfer
+ * @return Returns number of data transfered, otherwise returns 0
+ */
+int serial_tx_asynch(serial_t *obj, const void *tx, size_t tx_length, uint8_t tx_width, uint32_t handler, uint32_t event, DMAUsage hint)
+{
+}
+
+/** Begin asynchronous RX transfer (enable interrupt for data collecting)
+ *  The used buffer is specified in the serial object - rx_buff
+ *
+ * @param obj        The serial object
+ * @param rx         The receive buffer
+ * @param rx_length  The number of bytes to receive
+ * @param rx_width   Deprecated argument
+ * @param handler    The serial handler
+ * @param event      The logical OR of events to be registered
+ * @param handler    The serial handler
+ * @param char_match A character in range 0-254 to be matched
+ * @param hint       A suggestion for how to use DMA with this transfer
+ */
+void serial_rx_asynch(serial_t *obj, void *rx, size_t rx_length, uint8_t rx_width, uint32_t handler, uint32_t event, uint8_t char_match, DMAUsage hint)
+{
+}
+
+/** Attempts to determine if the serial peripheral is already in use for TX
+ *
+ * @param obj The serial object
+ * @return Non-zero if the RX transaction is ongoing, 0 otherwise
+ */
+uint8_t serial_tx_active(serial_t *obj)
+{
+}
+
+/** Attempts to determine if the serial peripheral is already in use for RX
+ *
+ * @param obj The serial object
+ * @return Non-zero if the RX transaction is ongoing, 0 otherwise
+ */
+uint8_t serial_rx_active(serial_t *obj)
+{
+}
+
+/** The asynchronous TX and RX handler.
+ *
+ * @param obj The serial object
+ * @return Returns event flags if an RX transfer termination condition was met; otherwise returns 0
+ */
+int serial_irq_handler_asynch(serial_t *obj)
+{
+}
+
+/** Abort the ongoing TX transaction. It disables the enabled interupt for TX and
+ *  flushes the TX hardware buffer if TX FIFO is used
+ *
+ * @param obj The serial object
+ */
+void serial_tx_abort_asynch(serial_t *obj)
+{
+}
+
+/** Abort the ongoing RX transaction. It disables the enabled interrupt for RX and
+ *  flushes the RX hardware buffer if RX FIFO is used
+ *
+ * @param obj The serial object
+ */
+void serial_rx_abort_asynch(serial_t *obj)
+{
+}
+
+#endif
+
 #endif

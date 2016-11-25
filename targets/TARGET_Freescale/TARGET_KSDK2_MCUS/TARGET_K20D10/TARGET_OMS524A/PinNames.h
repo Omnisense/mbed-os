@@ -204,10 +204,23 @@ typedef enum {
     LED_STATUS = LED_GREEN,
     LED_ACTION = LED_RED,
 
-    // USB Pins for serial functionality, UART0
-    USBTX = PTB17,
-    USBRX = PTB16,
-    
+    // Pins for serial functionality, UART0
+    USBTX = PTB17,              // default mbed definitions
+    USBRX = PTB16,              
+    SERIAL_DEBUG_TX = PTB17,    
+    SERIAL_DEBUG_RX = PTB16,
+    // UART3 is auxiliary port
+    SERIAL_AUX_TX = PTB11,
+    SERIAL_AUX_RX = PTB10,
+    SERIAL_AUX_CTS = PTB9,
+    SERIAL_AUX_RTS = PTB8,
+    // UART4 for BLE comms
+    SERIAL_BLE_TX = PTC15,
+    SERIAL_BLE_RX = PTC14,
+    // UART5 for GPS comms
+    SERIAL_GPS_TX = PTD9,
+    SERIAL_GPS_RX = PTD8,
+        
     // I2C for sensors and interrupt lines
     I2C_SCL = PTC10,
     I2C_SDA = PTC11,

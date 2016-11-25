@@ -15,7 +15,7 @@
  */
 #include <stddef.h>
 #include "us_ticker_api.h"
-#include "PeripheralNames.h"
+//#include "PeripheralNames.h"
 #include "fsl_pit.h"
 #include "fsl_clock_config.h"
 
