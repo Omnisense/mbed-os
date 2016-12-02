@@ -42,19 +42,21 @@ void i2c_init(i2c_t *obj, PinName sda, PinName scl) {
     i2c_master_config_t master_config;
 
     I2C_MasterGetDefaultConfig(&master_config);
+        
     I2C_MasterInit(i2c_addrs[obj->instance], &master_config, CLOCK_GetFreq(i2c_clocks[obj->instance]));
     I2C_EnableInterrupts(i2c_addrs[obj->instance], kI2C_GlobalInterruptEnable);
 
     pinmap_pinout(sda, PinMap_I2C_SDA);
+    pin_mode(sda, PullUp);
     pinmap_pinout(scl, PinMap_I2C_SCL);
+    pin_mode(scl, PullUp);
 
 #if defined(FSL_FEATURE_PORT_HAS_OPEN_DRAIN) && FSL_FEATURE_PORT_HAS_OPEN_DRAIN
     PORT_Type *port_addrs[] = PORT_BASE_PTRS;
     PORT_Type *base = port_addrs[sda >> GPIO_PORT_SHIFT];
-
     base->PCR[sda & 0xFF] |= PORT_PCR_ODE_MASK;
     base->PCR[scl & 0xFF] |= PORT_PCR_ODE_MASK;
-#endif
+#endif    
 }
 
 int i2c_start(i2c_t *obj) {

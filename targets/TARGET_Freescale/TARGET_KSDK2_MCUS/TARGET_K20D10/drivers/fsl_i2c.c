@@ -837,7 +837,7 @@ status_t I2C_MasterReadBlocking(I2C_Type *base, uint8_t *rxBuff, size_t rxSize)
 status_t I2C_MasterTransferBlocking(I2C_Type *base, i2c_master_transfer_t *xfer)
 {
     assert(xfer);
-
+    
     i2c_direction_t direction = xfer->direction;
     status_t result = kStatus_Success;
 
@@ -864,7 +864,7 @@ status_t I2C_MasterTransferBlocking(I2C_Type *base, i2c_master_transfer_t *xfer)
     {
         result = I2C_MasterStart(base, xfer->slaveAddress, direction);
     }
-
+        
     /* Return if error. */
     if (result)
     {
@@ -960,7 +960,7 @@ status_t I2C_MasterTransferBlocking(I2C_Type *base, i2c_master_transfer_t *xfer)
     {
         /* Send Data. */
         result = I2C_MasterWriteBlocking(base, xfer->data, xfer->dataSize);
-
+        
         if (((result == kStatus_Success) && (!(xfer->flags & kI2C_TransferNoStopFlag))) || (result == kStatus_I2C_Nak))
         {
             /* Clear the IICIF flag. */

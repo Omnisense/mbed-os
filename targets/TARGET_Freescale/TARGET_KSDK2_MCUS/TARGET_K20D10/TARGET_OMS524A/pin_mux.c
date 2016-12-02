@@ -218,6 +218,10 @@ void BOARD_InitPins(void) {
     (~(PORT_PCR_PS_MASK | PORT_PCR_ISF_MASK)))               /* Mask bits to zero which are setting */
       | PORT_PCR_PS(PCR_PS_UP)                               /* Pull Select: Internal pull-up resistor is enabled on the corresponding pin, if the corresponding Port Pull Enable Register bit is set. */
     );
+  PORTA->PCR[29] = ((PORTA->PCR[29] &
+    (~(PORT_PCR_PE_MASK | PORT_PCR_ISF_MASK)))               /* Mask bits to zero which are setting */
+      | PORT_PCR_PE(PCR_PS_UP)                               /* Pull Eanable */
+    );
   PORT_SetPinMux(PORTA, PIN3_IDX, kPORT_MuxAlt7);            /* PORTA3 (pin H9) is configured as JTAG_TMS, SWD_DIO */
   PORT_SetPinMux(PORTA, PIN4_IDX, kPORT_MuxAlt7);            /* PORTA4 (pin J8) is configured as NMI_b */
   PORT_SetPinMux(PORTA, PIN5_IDX, kPORT_MuxAlt7);            /* PORTA5 (pin K7) is configured as JTAG_TRST_b */
@@ -246,7 +250,17 @@ void BOARD_InitPins(void) {
   PORT_SetPinMux(PORTC, PIN0_IDX, kPORT_MuxAsGpio);          /* PORTC0 (pin B9) is configured as PTC0 */
   PORT_SetPinMux(PORTC, PIN1_IDX, kPORT_MuxAsGpio);          /* PORTC1 (pin D8) is configured as LLWU_P6, PTC1 */
   PORT_SetPinMux(PORTC, PIN10_IDX, kPORT_MuxAlt2);           /* PORTC10 (pin C6) is configured as I2C1_SCL */
+  PORTC->PCR[10] = ((PORTC->PCR[10] &
+    (~(PORT_PCR_DSE_MASK | PORT_PCR_ISF_MASK)))              /* Mask bits to zero which are setting */
+      | PORT_PCR_DSE(PCR_DSE_HIGH)                           /* Drive Strength Enable: High drive strength is configured on the corresponding pin, if pin is configured as a digital output. */
+    );
+  PORTC->PCR[10] = ((PORTC->PCR[10] & ~(PORT_PCR_ISF_MASK)) | (PORT_PCR_PE_MASK | PORT_PCR_PS_MASK));   /* enable pullup */
   PORT_SetPinMux(PORTC, PIN11_IDX, kPORT_MuxAlt2);           /* PORTC11 (pin C5) is configured as I2C1_SDA */
+  PORTC->PCR[11] = ((PORTC->PCR[11] &
+    (~(PORT_PCR_DSE_MASK | PORT_PCR_ISF_MASK)))              /* Mask bits to zero which are setting */
+      | PORT_PCR_DSE(PCR_DSE_HIGH)                           /* Drive Strength Enable: High drive strength is configured on the corresponding pin, if pin is configured as a digital output. */
+    );
+  PORTC->PCR[11] = ((PORTC->PCR[11] & ~(PORT_PCR_ISF_MASK)) | (PORT_PCR_PE_MASK | PORT_PCR_PS_MASK));   /* enable pullup */
   PORT_SetPinMux(PORTC, PIN12_IDX, kPORT_MuxAsGpio);         /* PORTC12 (pin B6) is configured as PTC12 */
   PORT_SetPinMux(PORTC, PIN13_IDX, kPORT_MuxAsGpio);         /* PORTC13 (pin A6) is configured as PTC13 */
   PORT_SetPinMux(PORTC, PIN14_IDX, kPORT_MuxAlt3);           /* PORTC14 (pin A5) is configured as UART4_RX */
