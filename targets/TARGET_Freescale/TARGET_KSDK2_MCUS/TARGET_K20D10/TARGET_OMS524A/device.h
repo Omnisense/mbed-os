@@ -19,19 +19,10 @@
 #define MBED_DEVICE_H
 
 
-
-
-
-
-
-
-
-
-
 #define DEVICE_ID_LENGTH       24
 
 
-
+#define MAX_SPI_CLK         23994368U
 
 
 #include "objects.h"

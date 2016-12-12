@@ -281,9 +281,11 @@ void BOARD_InitPins(void) {
   PORT_SetPinMux(PORTC, PIN7_IDX, kPORT_MuxAsGpio);          /* PORTC7 (pin B7) is configured as PTC7 */
   PORT_SetPinMux(PORTC, PIN8_IDX, kPORT_MuxAsGpio);          /* PORTC8 (pin A7) is configured as PTC8 */
   PORT_SetPinMux(PORTC, PIN9_IDX, kPORT_MuxAsGpio);          /* PORTC9 (pin D6) is configured as PTC9 */
+//  PORT_SetPinMux(PORTD, PIN0_IDX, kPORT_MuxAsGpio);            /* PORTD0 (pin D4) is configured as SPI0_PCS0 as PTD0 */
   PORT_SetPinMux(PORTD, PIN0_IDX, kPORT_MuxAlt2);            /* PORTD0 (pin D4) is configured as SPI0_PCS0 */
   PORT_SetPinMux(PORTD, PIN1_IDX, kPORT_MuxAlt2);            /* PORTD1 (pin D3) is configured as SPI0_SCK */
   PORT_SetPinMux(PORTD, PIN10_IDX, kPORT_MuxAsGpio);         /* PORTD10 (pin B1) is configured as PTD10 */
+//  PORT_SetPinMux(PORTD, PIN11_IDX, kPORT_MuxAsGpio);           /* PORTD11 (pin C2) is configured as SPI2_PCS0 as PTD11 */
   PORT_SetPinMux(PORTD, PIN11_IDX, kPORT_MuxAlt2);           /* PORTD11 (pin C2) is configured as SPI2_PCS0 */
   PORT_SetPinMux(PORTD, PIN12_IDX, kPORT_MuxAlt2);           /* PORTD12 (pin C1) is configured as SPI2_SCK */
   PORT_SetPinMux(PORTD, PIN13_IDX, kPORT_MuxAlt2);           /* PORTD13 (pin D2) is configured as SPI2_SOUT */
